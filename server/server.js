@@ -6,6 +6,11 @@ const app = express( );
 // set port
 const PORT = 5000;
 
+app.get( '/quote', function( req, res ){
+    res.send( 'hello' );
+})
+
+
 
 
 // start up server on port
