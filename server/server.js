@@ -8,6 +8,8 @@ const app = express( );
 // set port
 const PORT = 5000;
 
+app.use( express.static( 'server/public' ) );
+
 // setup basic route
 app.get( '/quote', function( req, res ){
     res.send( getQuote( ) )
