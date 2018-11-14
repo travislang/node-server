@@ -1,18 +1,24 @@
-// bring express package in from node_modules
+// requires
 const express = require( 'express' );
-//bring in quotes module
+const bodyParser = require( 'body-parser' );
 const getQuote = require( './modules/quotes.module.js' );
 
-// create an instance of express 
+// globals
 const app = express( );
-// set port
 const PORT = 5000;
 
+// uses
 app.use( express.static( 'server/public' ) );
+app.use( bodyParser.urlencoded( { extended: true } ) ); // neccessary for post data
 
-// setup basic route
+// routes
 app.get( '/quote', function( req, res ){
     res.send( getQuote( ) )
+})
+
+app.post( '/quote', function( req, res ){
+    console.log( 'POST hit:', req.body );
+    res.send( 'meow' );
 })
 
 // start up server on port

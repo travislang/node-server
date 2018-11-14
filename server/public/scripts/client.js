@@ -4,15 +4,38 @@ function readyNow( ){
     console.log( 'jquery is ready' );
     
     // click listeners
+    $( '#getQuote' ).on( 'click', handleClick );
+    $( '#addQuote' ).on( 'click', addQuote );
 
     // call our server
     // get a quote
-    $.ajax( {
+    getQuote( );
+}
+
+function handleClick( ){
+    getQuote( );
+}
+
+function getQuote( ){
+    $.ajax({
         method: 'GET',
         url: '/quote',
-    } ).then( function( res ){
+    }).then(function (res) {
         // append to DOM
-        $( '#target' ).append( `<p>${res}</p>`)
+        $('#target').append(`<p>${res}</p>`)
+    })
+}
 
-    } )
+function addQuote( ){
+    let objectToSend = {
+        quote: $( '#quoteIn' ).val( )
+    };
+    $.ajax({
+        method: 'POST',
+        url: '/quote',
+        data: objectToSend
+    }).then( function( res ) {
+        console.log( 'back from server with:', res)
+        $('#quoteIn').val('');
+    })
 }
