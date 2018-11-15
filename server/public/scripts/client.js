@@ -22,6 +22,7 @@ function getQuote( ){
         url: '/quote',
     }).then(function (res) {
         // append to DOM
+        $('#target').empty( );
         $('#target').append(`<p>${res}</p>`)
     })
 }
@@ -35,7 +36,6 @@ function addQuote( ){
         url: '/quote',
         data: objectToSend
     }).then( function( res ) {
-        console.log( 'back from server with:', res)
         $('#quoteIn').val('');
     })
 }

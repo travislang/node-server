@@ -17,4 +17,11 @@ function getQuote() {
     return quoteToReturn;
 }
 
-module.exports = getQuote;
+function addQuote( newQuote ){
+    quotes.push( newQuote );
+}
+
+module.exports = { 
+    getQuoteNow: getQuote,
+    addQuoteNow: addQuote
+    };
